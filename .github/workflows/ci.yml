@@ -87,6 +87,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm check:package
+      - name: Fail if npm would rewrite package.json on publish
+        run: |
+          npm publish --dry-run --provenance=false 2>&1 | tee publish.log
+          if grep -q "auto-corrected" publish.log; then
+            echo "::error::npm auto-corrects package.json on publish. Run 'npm pkg fix' and commit the result."
+            exit 1
+          fi
 
   # Single required status check for branch protection.
   ci-ok:
