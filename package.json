@@ -1,0 +1,89 @@
+{
+  "name": "llmknows",
+  "version": "0.0.0",
+  "description": "Does AI know your library? Measures how often LLMs hallucinate your npm package's API by typechecking the code they write against your real types.",
+  "keywords": [
+    "llm",
+    "ai",
+    "hallucination",
+    "benchmark",
+    "typescript",
+    "api",
+    "agents",
+    "llms-txt",
+    "claude",
+    "openai",
+    "developer-experience",
+    "cli"
+  ],
+  "homepage": "https://github.com/uemrey0/llmknows#readme",
+  "bugs": "https://github.com/uemrey0/llmknows/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uemrey0/llmknows.git"
+  },
+  "license": "MIT",
+  "author": "Ufuk Emre Yücetürk",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "bin": {
+    "llmknows": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "check:package": "publint --strict && attw --pack . --profile node16",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.18.0",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@biomejs/biome": "^2.5.15",
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
+    "@types/node": "^26.6.4",
+    "@vitest/coverage-v8": "^5.0.3",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.0",
+    "vitest": "^5.0.3"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "openai": "^7.27.0",
+    "typescript": "^5.9.3"
+  }
+}
