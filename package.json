@@ -1,6 +1,6 @@
 {
   "name": "llmknows",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Does AI know your library? Measures how often LLMs hallucinate your npm package's API by typechecking the code they write against your real types.",
   "keywords": [
     "llm",
