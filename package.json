@@ -43,7 +43,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
   "bin": {
-    "llmknows": "./dist/cli.mjs"
+    "llmknows": "dist/cli.mjs"
   },
   "files": [
     "dist"
