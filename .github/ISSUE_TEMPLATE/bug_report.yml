@@ -1,0 +1,73 @@
+name: Bug report
+description: Something in llmknows is not working as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please search existing issues first.
+        Never paste API keys into this form.
+  - type: input
+    id: version
+    attributes:
+      label: llmknows version
+      description: Output of `npx llmknows --version`.
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: The exact command you ran (remove any secrets).
+      placeholder: npx llmknows zod --models anthropic:claude-opus-5-5
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Target package and version
+      description: The npm package you were evaluating.
+      placeholder: zod@4.1.0
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the full error output or the part of the report that looks wrong.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: A minimal reproduction makes this much faster to fix.
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: v24.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: providers
+    attributes:
+      label: Providers / models involved
+      placeholder: anthropic:claude-opus-5-5, ollama:qwen2.5-coder:7b
